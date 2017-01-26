@@ -54,7 +54,7 @@ uint32_t cp_nb_rx_bad;
 uint32_t cp_nb_rx_nocrc;
 uint32_t cp_up_pkt_fwd;
 
-enum sf_t { SF7=7, SF8, SF9, SF10, SF11, SF12 };
+enum sf_t { SF7=7, SF8=8, SF9, SF10, SF11, SF12 };
 
 /*******************************************************************************
  *
@@ -85,7 +85,7 @@ static char description[64] = "";                        /* used for free form d
 
 // define servers
 // TODO: use host names and dns
-#define SERVER1 "54.72.145.119"    // The Things Network: croft.thethings.girovito.nl
+#define SERVER1 "10.42.0.1"    // The Things Network: croft.thethings.girovito.nl
 //#define SERVER2 "192.168.1.10"      // local
 #define PORT 1700                   // The port on which to send data
 
@@ -304,7 +304,7 @@ void SetupLoRa()
     }
     writeRegister(REG_MAX_PAYLOAD_LENGTH,0x80);
     writeRegister(REG_PAYLOAD_LENGTH,PAYLOAD_LENGTH);
-    writeRegister(REG_HOP_PERIOD,0xFF);
+    writeRegister(REG_HOP_PERIOD,0x00);
     writeRegister(REG_FIFO_ADDR_PTR, readRegister(REG_FIFO_RX_BASE_AD));
 
     // Set Continous Receive Mode
